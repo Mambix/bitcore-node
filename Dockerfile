@@ -24,18 +24,9 @@ RUN apt-get purge -y \
   apt-get autoclean && \
   apt-get autoremove -y
 
-RUN rm -rf \
-  node_modules/bitcore-node/test \
-  node_modules/bitcore-node/bin/bitcoin-*/bin/bitcoin-qt \
-  node_modules/bitcore-node/bin/bitcoin-*/bin/test_bitcoin \
-  node_modules/bitcore-node/bin/bitcoin-*-linux64.tar.gz \
-  /dumb-init_*.deb \
-  /root/.npm \
-  /root/.node-gyp \
-  /tmp/* \
-  /var/lib/apt/lists/*
+
 
 ENV BITCOIN_NETWORK testnet
-ENTRYPOINT ["/usr/bin/dumb-init", "--", "/bitcore-node-entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/dumb-init", "--", "./bitcore-node-entrypoint.sh"]
 
 VOLUME /root/bitcoin-node/data
