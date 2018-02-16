@@ -36,6 +36,6 @@ RUN rm -rf \
   /var/lib/apt/lists/*
 
 ENV BITCOIN_NETWORK testnet
-ENTRYPOINT ["/usr/bin/dumb-init", "--", "/root/bitcoin-node/bitcore-node-entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/dumb-init", "--", "bitcore-node-entrypoint.sh"]
 
 VOLUME /root/bitcoin-node/data
